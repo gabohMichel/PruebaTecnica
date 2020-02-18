@@ -1,0 +1,15 @@
+E:\PruebaTecnica\PruebaTecnica\bin\Debug\PruebaTecnica.exe.config
+E:\PruebaTecnica\PruebaTecnica\bin\Debug\PruebaTecnica.exe
+E:\PruebaTecnica\PruebaTecnica\bin\Debug\PruebaTecnica.pdb
+E:\PruebaTecnica\PruebaTecnica\bin\Debug\EntityFramework.dll
+E:\PruebaTecnica\PruebaTecnica\bin\Debug\EntityFramework.SqlServer.dll
+E:\PruebaTecnica\PruebaTecnica\bin\Debug\EntityFramework.xml
+E:\PruebaTecnica\PruebaTecnica\bin\Debug\EntityFramework.SqlServer.xml
+E:\PruebaTecnica\PruebaTecnica\obj\Debug\PruebaTecnica.csprojAssemblyReference.cache
+E:\PruebaTecnica\PruebaTecnica\obj\Debug\PruebaTecnica.Form1.resources
+E:\PruebaTecnica\PruebaTecnica\obj\Debug\PruebaTecnica.Properties.Resources.resources
+E:\PruebaTecnica\PruebaTecnica\obj\Debug\PruebaTecnica.csproj.GenerateResource.cache
+E:\PruebaTecnica\PruebaTecnica\obj\Debug\PruebaTecnica.csproj.CopyComplete
+E:\PruebaTecnica\PruebaTecnica\obj\Debug\PruebaTecnica.exe
+E:\PruebaTecnica\PruebaTecnica\obj\Debug\PruebaTecnica.pdb
+E:\PruebaTecnica\PruebaTecnica\bin\Debug\Critza.Bibliotecas.dll

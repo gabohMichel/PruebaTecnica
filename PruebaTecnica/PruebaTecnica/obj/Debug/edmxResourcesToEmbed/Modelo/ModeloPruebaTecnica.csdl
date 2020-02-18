@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PruebaTecnicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PruebaTecnicaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Direccion" EntityType="PruebaTecnicaModel.Direccion" />
+    <EntitySet Name="Persona" EntityType="PruebaTecnicaModel.Persona" />
+    <EntitySet Name="Telefono" EntityType="PruebaTecnicaModel.Telefono" />
+    <AssociationSet Name="FK_Persona_Direccion" Association="PruebaTecnicaModel.FK_Persona_Direccion">
+      <End Role="Direccion" EntitySet="Direccion" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Telefono_Telefono" Association="PruebaTecnicaModel.FK_Telefono_Telefono">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Telefono" EntitySet="Telefono" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Direccion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="varCalleNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="varEstado" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="varMunicipio" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="varColonia" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Persona" Relationship="PruebaTecnicaModel.FK_Persona_Direccion" FromRole="Direccion" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="varNombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="varApellidoPaterno" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="varApellidoMaterno" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="varCurp" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="dtFechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="cSexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="varEstadoNacimiento" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IdFkDireccion" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Direccion" Relationship="PruebaTecnicaModel.FK_Persona_Direccion" FromRole="Persona" ToRole="Direccion" />
+    <NavigationProperty Name="Telefono" Relationship="PruebaTecnicaModel.FK_Telefono_Telefono" FromRole="Persona" ToRole="Telefono" />
+  </EntityType>
+  <EntityType Name="Telefono">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="varNumeroTelefonico" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IdFkPersona" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Persona" Relationship="PruebaTecnicaModel.FK_Telefono_Telefono" FromRole="Telefono" ToRole="Persona" />
+  </EntityType>
+  <Association Name="FK_Persona_Direccion">
+    <End Type="PruebaTecnicaModel.Direccion" Role="Direccion" Multiplicity="1" />
+    <End Type="PruebaTecnicaModel.Persona" Role="Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Direccion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="IdFkDireccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Telefono_Telefono">
+    <End Type="PruebaTecnicaModel.Persona" Role="Persona" Multiplicity="1" />
+    <End Type="PruebaTecnicaModel.Telefono" Role="Telefono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Telefono">
+        <PropertyRef Name="IdFkPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

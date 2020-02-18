@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PruebaTecnicaModelStoreContainer" CdmEntityContainer="PruebaTecnicaEntities">
+    <EntitySetMapping Name="Direccion">
+      <EntityTypeMapping TypeName="PruebaTecnicaModel.Direccion">
+        <MappingFragment StoreEntitySet="Direccion">
+          <ScalarProperty Name="varColonia" ColumnName="varColonia" />
+          <ScalarProperty Name="varMunicipio" ColumnName="varMunicipio" />
+          <ScalarProperty Name="varEstado" ColumnName="varEstado" />
+          <ScalarProperty Name="varCalleNo" ColumnName="varCalleNo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="PruebaTecnicaModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="IdFkDireccion" ColumnName="IdFkDireccion" />
+          <ScalarProperty Name="varEstadoNacimiento" ColumnName="varEstadoNacimiento" />
+          <ScalarProperty Name="cSexo" ColumnName="cSexo" />
+          <ScalarProperty Name="dtFechaNacimiento" ColumnName="dtFechaNacimiento" />
+          <ScalarProperty Name="varCurp" ColumnName="varCurp" />
+          <ScalarProperty Name="varApellidoMaterno" ColumnName="varApellidoMaterno" />
+          <ScalarProperty Name="varApellidoPaterno" ColumnName="varApellidoPaterno" />
+          <ScalarProperty Name="varNombre" ColumnName="varNombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Telefono">
+      <EntityTypeMapping TypeName="PruebaTecnicaModel.Telefono">
+        <MappingFragment StoreEntitySet="Telefono">
+          <ScalarProperty Name="IdFkPersona" ColumnName="IdFkPersona" />
+          <ScalarProperty Name="varNumeroTelefonico" ColumnName="varNumeroTelefonico" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PruebaTecnicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Direccion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="varCalleNo" Type="varchar" MaxLength="200" />
+    <Property Name="varEstado" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="varMunicipio" Type="varchar" MaxLength="150" />
+    <Property Name="varColonia" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="varNombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="varApellidoPaterno" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="varApellidoMaterno" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="varCurp" Type="varchar" MaxLength="18" Nullable="false" />
+    <Property Name="dtFechaNacimiento" Type="date" Nullable="false" />
+    <Property Name="cSexo" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="varEstadoNacimiento" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="IdFkDireccion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Telefono">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="varNumeroTelefonico" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="IdFkPersona" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Persona_Direccion">
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Direccion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="IdFkDireccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Telefono_Telefono">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Telefono" Type="Self.Telefono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Telefono">
+        <PropertyRef Name="IdFkPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PruebaTecnicaModelStoreContainer">
+    <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Telefono" EntityType="Self.Telefono" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Persona_Direccion" Association="Self.FK_Persona_Direccion">
+      <End Role="Direccion" EntitySet="Direccion" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Telefono_Telefono" Association="Self.FK_Telefono_Telefono">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Telefono" EntitySet="Telefono" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
